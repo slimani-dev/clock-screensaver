@@ -1,0 +1,242 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+    --radius: 0.625rem;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.145 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.145 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.985 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.396 0.141 25.723);
+    --destructive-foreground: oklch(0.637 0.237 25.331);
+    --border: oklch(0.269 0 0);
+    --input: oklch(0.269 0 0);
+    --ring: oklch(0.439 0 0);
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(0.269 0 0);
+    --sidebar-ring: oklch(0.439 0 0);
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+
+@font-face {
+    font-family: 'LCDDot TR';
+    src: url('/fonts/lcddot_tr.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "14 SegmentLED";
+    src: url('/fonts/14SegmentLED.woff2') format('woff2');
+    font-display: swap;
+}
+
+@theme {
+    --font-mono: "Share Tech Mono", mono;
+    --font-vt323: "VT323", mono;
+    --font-orbit: "Orbitron", monospace;
+    --font-nova: "Nova Mono", monospace;
+    --font-code: "Source Code Pro", monospace;
+    --font-unifont: "UnifontEX", monospace;
+    --font-workbench: "Workbench", sans-serif;
+    --font-kola: "Kola", sans-serif;
+    --font-styro: "Styro", sans-serif;
+    --font-array: "Array", sans-serif;
+    --font-technor: "Technor", sans-serif;
+    --font-nippo: "Nippo", sans-serif;
+
+    --font-calculator: "Calculator", monospace;
+    --font-chillout: "Chuck Chillout", sans-serif;
+    --font-delia-black: "delia Black", serif;
+    --font-delia: "delia", serif;
+    --font-display-free: "DISPLAY TFB", sans-serif;
+    --font-energized: "Energized", sans-serif;
+    --font-hydrogen: "HydrogenType", sans-serif;
+    --font-jd-digisquare: "JD DigiSquare", monospace;
+    --font-lcddot: "LCDDot TR", monospace;
+    --font-led-calculator: "LED Calculator", monospace;
+    --font-led-dot: "LED Dot-Matrix", monospace;
+
+  --font-pica-mrt: "Pica Hole - MRT", monospace;
+    --font-pica-mrst: "Pica Hole - MRST", monospace;
+    --font-pica-grids: "Pica Hole - Grids", monospace;
+    --font-pica-abs: "Pica Hole - ABS", monospace;
+    --font-pica-sim: "Pica Hole - SIM", monospace;
+    --font-pica-xpl: "Pica Hole - XPL", monospace;
+    --font-pica-morse: "Pica Hole - 1890 Morse", monospace;
+    --font-retro-party: "Retro Party", monospace;
+    --font-seven-segment: "Seven Segment", monospace;
+    --font-square01: "Squarodynamic 01", monospace;
+    --font-square02: "Squarodynamic 02", monospace;
+    --font-square03: "Squarodynamic 03", monospace;
+    --font-square04: "Squarodynamic 04", monospace;
+    --font-square05: "Squarodynamic 05", monospace;
+    --font-square06: "Squarodynamic 06", monospace;
+    --font-square07: "Squarodynamic 07", monospace;
+    --font-square08: "Squarodynamic 08", monospace;
+    --font-square09: "Squarodynamic 09", monospace;
+    --font-square10: "Squarodynamic 10", monospace;
+    --font-atomic-clock: "Atomic Clock Radio", monospace;
+    --font-back1982: "Back to 1982", monospace;
+    --font-digitek: "Digitek", monospace;
+    --font-ds: "DS-Digital", monospace;
+}
+
+@source inline("font-mono");
+@source inline("font-vt323");
+@source inline("font-orbit");
+@source inline("font-nova");
+@source inline("font-code");
+@source inline("font-unifont");
+@source inline("font-workbench");
+@source inline("font-kola");
+@source inline("font-styro");
+@source inline("font-array");
+@source inline("font-technor");
+@source inline("font-nippo");
+
+@source inline("font-calculator");
+@source inline("font-chillout");
+@source inline("font-delia");
+@source inline("font-delia-black");
+
+@source inline("font-display-free");
+@source inline("font-energized");
+@source inline("font-hydrogen");
+@source inline("font-jd-digisquare");
+@source inline("font-led-calculator");
+@source inline("font-led-dot");
+@source inline("font-seven-segment");
+@source inline("font-digitek");
+
+
+@source inline("font-14segment");
+@source inline("font-digital-display");
+@source inline("font-lcddot");
+
+@source inline("font-pica-mrt");
+@source inline("font-pica-mrst");
+@source inline("font-pica-grids");
+@source inline("font-pica-abs");
+@source inline("font-pica-sim");
+@source inline("font-pica-xpl");
+@source inline("font-pica-morse");
+@source inline("font-retro-party");
+
+
+@source inline("font-atomic-clock");
+@source inline("font-back1982");
+
+@source inline("font-digitek");
+@source inline("font-ds-bold");
+
+@source inline("font-ds-italic");
+@source inline("font-ds");
+@source inline("font-ds-bolditalic");
+
+
