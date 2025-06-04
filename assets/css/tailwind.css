@@ -123,13 +123,6 @@
     }
 }
 
-
-@font-face {
-    font-family: 'LCDDot TR';
-    src: url('/fonts/lcddot_tr.woff2') format('woff2');
-    font-display: swap;
-}
-
 @theme {
     --font-mono: "Share Tech Mono", mono;
     --font-vt323: "VT323", mono;
