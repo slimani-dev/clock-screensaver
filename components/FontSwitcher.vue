@@ -16,39 +16,28 @@ import {
 
 import {Button} from "~/components/ui/button";
 import type {AcceptableValue} from "reka-ui";
+import type {Font} from "~/types";
+import {fonts} from '~/data/fonts'
 
-const model = defineModel<string>()
-const updateFont = (font: AcceptableValue) => {
-  if (typeof font === "string") model.value = font
+const model = defineModel<Font>()
+
+function isFont(obj: unknown): obj is Font {
+  return (
+      typeof obj === 'object' &&
+      obj !== null &&
+      'name' in obj &&
+      typeof (obj as { name?: unknown }).name === 'string' &&
+      'className' in obj &&
+      typeof (obj as { className?: unknown }).className === 'string'
+  );
 }
 
-const fonts = [
-  'mono',
-  'Share Tech Mono',
-  'VT323',
-  'Orbitron',
-  'Nova Mono',
-  'Source Code Pro',
-  'UnifontEX',
-  'Workbench',
-  'Kola',
-  'Styro',
-  'Array',
-  'Technor',
-  'Nippo',
-  "Calculator",
-  "Chuck Chillout",
-  "delia Black",
-  "delia",
-  "DISPLAY TFB",
-  "Energized",
-  "HydrogenType",
-  "JD DigiSquare",
-  "LED Calculator",
-  "LED Dot-Matrix",
-  "Seven Segment",
-  "LCDDot TR",
-]
+const updateFont = (font: Font | AcceptableValue) => {
+  if (isFont(font)) {
+    model.value = font;
+  }
+};
+
 </script>
 
 <template>
@@ -61,7 +50,7 @@ const fonts = [
     <ComboboxAnchor class="w-full">
       <ComboboxTrigger as-child>
         <Button variant="outline" class="w-full justify-between">
-          {{ model ?? 'Select font' }}
+          {{ model?.name ?? 'Select font' }}
 
           <ChevronsUpDown class="ml-2 h-4 w-4 shrink-0 opacity-50"/>
         </Button>
@@ -83,10 +72,10 @@ const fonts = [
       <ComboboxGroup>
         <ComboboxItem
             v-for="font in fonts"
-            :key="font"
+            :key="font.name"
             :value="font"
-            :style="{fontFamily: font}">
-          {{ font }}
+            :class="cn(font.className)">
+          {{ font.name }}
           <ComboboxItemIndicator>
             <Check :class="cn('ml-auto h-4 w-4')"/>
           </ComboboxItemIndicator>

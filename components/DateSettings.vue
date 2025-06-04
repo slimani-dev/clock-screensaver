@@ -6,6 +6,7 @@ import {
 import {SidebarGroup, SidebarGroupContent, SidebarGroupLabel} from "~/components/ui/sidebar";
 import {CollapsibleContent, CollapsibleTrigger} from "reka-ui";
 import {Collapsible} from "~/components/ui/collapsible";
+import type {Font} from "~/types";
 
 const store = useDateSettingsStore()
 
@@ -24,7 +25,7 @@ const updateTopMargin = (payload: number[] | undefined) => {
   store.topMargin = `${payload[0]}vh`
 }
 
-const updateFont = (font: string | undefined) => {
+const updateFont = (font: Font | undefined) => {
   if (font) store.font = font
 }
 
@@ -47,7 +48,7 @@ const updateFont = (font: string | undefined) => {
         <SidebarGroupContent class="py-2">
           <SidebarMenuItem class="p-2">
             <div class="flex flex-col gap-3 leading-none">
-              <span class="font-semibold">Font : {{ font }}</span>
+              <span class="font-semibold">Font : {{ font?.name }}</span>
               <FontSwitcher :model-value="font" @update:model-value="updateFont"/>
             </div>
           </SidebarMenuItem>

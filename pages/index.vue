@@ -49,13 +49,13 @@ const dateTopMargin = computed(() => dateStore.topMargin)
 
 <template>
   <div class="absolute right-0 top-0 bottom-0 min-w-screen flex flex-col items-center justify-center">
-    <div class="font-medium" :style="{fontFamily: clockFont}">
+    <div :class="cn('font-medium',clockFont?.className)">
       <span class="leading-none" :style="{fontSize: hoursFontSize}">{{ dummyData ? 88 : hours }}</span>
       <span
           v-if="hours && minutes"
           class="leading-none"
           :style="{fontSize: minutesDotsFontSize, marginLeft: minutesDotsMargin, marginRight: minutesDotsMargin}">:</span>
-      <span class="leading-none" :style="{fontSize: minutesFontSize}">{{ dummyData ? 88 :  minutes }}</span>
+      <span class="leading-none" :style="{fontSize: minutesFontSize}">{{ dummyData ? 88 : minutes }}</span>
       <span
           :class="cn(
                   'leading-none inline-block overflow-visible',
@@ -65,7 +65,7 @@ const dateTopMargin = computed(() => dateStore.topMargin)
           dummyData ? 88 : seconds
         }}</span>
     </div>
-    <div class="font-medium" :style="{ marginTop: dateTopMargin, fontFamily: dateFont }">
+    <div :class="cn('font-medium',dateFont?.className)" :style="{ marginTop: dateTopMargin}">
       <span class="leading-none" :style="{fontSize: dateFontSize}">{{ currentDate }}</span>
     </div>
   </div>
