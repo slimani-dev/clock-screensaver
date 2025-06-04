@@ -36,7 +36,6 @@ const fonts = [
   'Array',
   'Technor',
   'Nippo',
-
   "Calculator",
   "Chuck Chillout",
   "delia Black",

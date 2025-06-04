@@ -130,12 +130,6 @@
     font-display: swap;
 }
 
-@font-face {
-    font-family: "14 SegmentLED";
-    src: url('/fonts/14SegmentLED.woff2') format('woff2');
-    font-display: swap;
-}
-
 @theme {
     --font-mono: "Share Tech Mono", mono;
     --font-vt323: "VT323", mono;
@@ -199,12 +193,10 @@
 @source inline("font-array");
 @source inline("font-technor");
 @source inline("font-nippo");
-
 @source inline("font-calculator");
 @source inline("font-chillout");
 @source inline("font-delia");
 @source inline("font-delia-black");
-
 @source inline("font-display-free");
 @source inline("font-energized");
 @source inline("font-hydrogen");
@@ -213,30 +205,7 @@
 @source inline("font-led-dot");
 @source inline("font-seven-segment");
 @source inline("font-digitek");
-
-
-@source inline("font-14segment");
 @source inline("font-digital-display");
 @source inline("font-lcddot");
-
-@source inline("font-pica-mrt");
-@source inline("font-pica-mrst");
-@source inline("font-pica-grids");
-@source inline("font-pica-abs");
-@source inline("font-pica-sim");
-@source inline("font-pica-xpl");
-@source inline("font-pica-morse");
-@source inline("font-retro-party");
-
-
-@source inline("font-atomic-clock");
-@source inline("font-back1982");
-
-@source inline("font-digitek");
-@source inline("font-ds-bold");
-
-@source inline("font-ds-italic");
-@source inline("font-ds");
-@source inline("font-ds-bolditalic");
 
 
