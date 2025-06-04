@@ -1,19 +1,17 @@
 import {defineStore} from 'pinia'
 
 
-export const useClockSettingsStore = defineStore('digital', {
+export const useClockSettingsStore = defineStore('clock', {
   state: () => ({
     font: 'VT323',
-    hoursFontSize: '30vw',
-    minutesFontSize: '30vw',
-    minutesDotsFontSize: '30vw',
-    minutesDotsMargin: '-10vw',
-    secondsFontSize: '15vw',
-    secondsLeftPadding: '20vw',
-    secondsWidth: '20vw',
-    dateFontSize: '6vw',
-    dateTopMargin: '20vh',
-    invertColors: false,
+    hoursFontSize: '25vw',
+    minutesFontSize: '25vw',
+    minutesDotsFontSize: '25vw',
+    minutesDotsMargin: '0vw',
+    secondsFontSize: '11vw',
+    secondsLeftPadding: '0vw',
+    secondsWidth: '15vw',
+    dummyData: false,
   }),
   persist: true,
 })

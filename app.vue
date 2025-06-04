@@ -4,19 +4,35 @@ import {
   SidebarTrigger,
 } from '@/components/ui/sidebar'
 
+import { Toaster } from '@/components/ui/sonner'
+import { toast } from 'vue-sonner'
+import 'vue-sonner/style.css'
+const { $pwa } = useNuxtApp()
 
-const showButtons = ref(false);
+const showButtons = ref(true);
 const openSideBar = ref(false);
+
+const clockStore = useClockSettingsStore()
+
 
 const toggleMenu = () => {
   showButtons.value = !showButtons.value
-  if (showButtons.value === false) {
+  if (!showButtons.value) {
     openSideBar.value = false
+    clockStore.dummyData = false
   }
 }
+
+onMounted(() => {
+  if ($pwa?.offlineReady)
+    toast.success('App ready to work offline')
+})
+
 </script>
 
 <template>
+  <NuxtPwaManifest />
+  <Toaster />
   <SidebarProvider v-model:open="openSideBar" :default-open="false" class="h-screen w-screen">
     <AppSidebar/>
     <main class="h-screen w-screen relative">
@@ -30,8 +46,10 @@ const toggleMenu = () => {
           v-show="showButtons"
           class="absolute top-0 inset-x-0 flex flex-row justify-between px-3 py-2 mt-3">
         <SidebarTrigger/>
-
-        <FullScreenButton/>
+        <div class="space-x-3">
+          <WakeLook/>
+          <FullScreenButton/>
+        </div>
       </header>
     </main>
   </SidebarProvider>

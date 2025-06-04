@@ -1,36 +1,26 @@
 <script setup lang="ts">
 import {Check, ChevronsUpDown} from 'lucide-vue-next'
 
-import {ref} from 'vue'
+import {cn} from '@/lib/utils'
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+  Combobox,
+  ComboboxAnchor,
+  ComboboxEmpty,
+  ComboboxGroup,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxList,
+  ComboboxTrigger
+} from '@/components/ui/combobox'
 
-import {
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from '@/components/ui/sidebar'
+import {Button} from "~/components/ui/button";
+import type {AcceptableValue} from "reka-ui";
 
-
-
-const versionButton = ref<ComponentPublicInstance | undefined>()
-
-onMounted(() => {
-  const el = versionButton.value?.$el
-  if (el instanceof HTMLElement) {
-    const width = `${el.clientWidth - 9}px`
-    console.log('width', width)
-    document.documentElement.style.setProperty('--dropdown-trigger-width', width)
-  }
-})
-
-const store = useClockSettingsStore()
-
-const selectedFont = computed(() => store.font)
+const model = defineModel<string>()
+const updateFont = (font: AcceptableValue) => {
+  if (typeof font === "string") model.value = font
+}
 
 const fonts = [
   'mono',
@@ -60,43 +50,49 @@ const fonts = [
   "Seven Segment",
   "LCDDot TR",
 ]
-
-const updateFont = (font: string) => {
-  store.font = font
-}
 </script>
 
 <template>
-  <SidebarMenu>
-    <SidebarMenuItem>
-      <DropdownMenu>
-        <DropdownMenuTrigger as-child>
-          <SidebarMenuButton
-              ref="versionButton"
-              size="lg"
-              class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-          >
-            <div class="flex flex-col gap-0.5 leading-none">
-              <span class="font-semibold">Font</span>
-              <span class="">v{{ selectedFont }}</span>
-            </div>
-            <ChevronsUpDown class="ml-auto"/>
-          </SidebarMenuButton>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent
-            align="start"
-        >
-          <DropdownMenuItem
-              v-for="font in fonts"
-              :key="font"
-              class="w-[var(--dropdown-trigger-width)]"
-              @select="updateFont(font)"
-          >
-            <span :style="{fontFamily: font}">{{ font }}</span>
-            <Check v-if="font === selectedFont" class="ml-auto"/>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </SidebarMenuItem>
-  </SidebarMenu>
+  <Combobox
+      by="label"
+      class="w-full"
+      :model-value="model"
+      @update:model-value="updateFont"
+  >
+    <ComboboxAnchor class="w-full">
+      <ComboboxTrigger as-child>
+        <Button variant="outline" class="w-full justify-between">
+          {{ model ?? 'Select font' }}
+
+          <ChevronsUpDown class="ml-2 h-4 w-4 shrink-0 opacity-50"/>
+        </Button>
+      </ComboboxTrigger>
+    </ComboboxAnchor>
+
+    <ComboboxList class="w-full">
+      <div class="relative w-full items-start">
+        <ComboboxInput
+            class=" focus-visible:ring-0 border-0 border-b rounded-none h-10"
+            placeholder="Select font..."/>
+
+      </div>
+
+      <ComboboxEmpty>
+        Nothing found.
+      </ComboboxEmpty>
+
+      <ComboboxGroup>
+        <ComboboxItem
+            v-for="font in fonts"
+            :key="font"
+            :value="font"
+            :style="{fontFamily: font}">
+          {{ font }}
+          <ComboboxItemIndicator>
+            <Check :class="cn('ml-auto h-4 w-4')"/>
+          </ComboboxItemIndicator>
+        </ComboboxItem>
+      </ComboboxGroup>
+    </ComboboxList>
+  </Combobox>
 </template>

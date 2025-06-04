@@ -30,40 +30,43 @@ onUnmounted(() => {
   clearInterval(timerId);
 });
 
-const store = useClockSettingsStore()
+const clockStore = useClockSettingsStore()
+const dateStore = useDateSettingsStore()
 
-const fontFamily = computed(() => store.font)
-const hoursFontSize = computed(() => store.hoursFontSize)
-const minutesFontSize = computed(() => store.minutesFontSize)
-const minutesDotsFontSize = computed(() => store.minutesDotsFontSize)
-const minutesDotsMargin = computed(() => store.minutesDotsMargin)
-const secondsFontSize = computed(() => store.secondsFontSize)
-const secondsLeftPadding = computed(() => store.secondsLeftPadding)
-const secondsWidth = computed(() => store.secondsWidth)
-const dateFontSize = computed(() => store.dateFontSize)
-const dateTopMargin = computed(() => store.dateTopMargin)
+const clockFont = computed(() => clockStore.font)
+const hoursFontSize = computed(() => clockStore.hoursFontSize)
+const minutesFontSize = computed(() => clockStore.minutesFontSize)
+const minutesDotsFontSize = computed(() => clockStore.minutesDotsFontSize)
+const minutesDotsMargin = computed(() => clockStore.minutesDotsMargin)
+const secondsFontSize = computed(() => clockStore.secondsFontSize)
+const secondsLeftPadding = computed(() => clockStore.secondsLeftPadding)
+const secondsWidth = computed(() => clockStore.secondsWidth)
+const dummyData = computed(() => clockStore.dummyData)
+const dateFont = computed(() => dateStore.font)
+const dateFontSize = computed(() => dateStore.fontSize)
+const dateTopMargin = computed(() => dateStore.topMargin)
 </script>
 
 <template>
   <div class="absolute right-0 top-0 bottom-0 min-w-screen flex flex-col items-center justify-center">
-    <div class="font-medium" :style="{fontFamily}">
-      <span class="leading-none" :style="{fontSize: hoursFontSize, fontFamily}">{{ hours }}</span>
+    <div class="font-medium" :style="{fontFamily: clockFont}">
+      <span class="leading-none" :style="{fontSize: hoursFontSize}">{{ dummyData ? 88 : hours }}</span>
       <span
           v-if="hours && minutes"
           class="leading-none"
           :style="{fontSize: minutesDotsFontSize, marginLeft: minutesDotsMargin, marginRight: minutesDotsMargin}">:</span>
-      <span class="leading-none" :style="{fontSize: minutesFontSize}">{{ minutes }}</span>
+      <span class="leading-none" :style="{fontSize: minutesFontSize}">{{ dummyData ? 88 :  minutes }}</span>
       <span
           :class="cn(
                   'leading-none inline-block overflow-visible',
                   open ? 'border-b' : '',
                 )"
           :style="{fontSize: secondsFontSize, paddingLeft: secondsLeftPadding, width: secondsWidth}">{{
-          seconds
+          dummyData ? 88 : seconds
         }}</span>
     </div>
-    <div class="font-medium" :style="{ marginTop: dateTopMargin, fontFamily }">
-      <span class="leading-0" :style="{fontSize: dateFontSize}">{{ currentDate }}</span>
+    <div class="font-medium" :style="{ marginTop: dateTopMargin, fontFamily: dateFont }">
+      <span class="leading-none" :style="{fontSize: dateFontSize}">{{ currentDate }}</span>
     </div>
   </div>
 </template>

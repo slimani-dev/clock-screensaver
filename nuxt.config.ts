@@ -1,15 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from '@tailwindcss/vite'
 
+const appName = 'Clock ScreenSaver';
+const appShortName = 'Clock';
+const description = 'A customizable digital clock screen saver with multiple fonts, styles, and display options. Features various digital clock faces and transitions for a modern, retro, or minimalist look.';
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   app: {
     head: {
-      title: 'Clock ScreenSaver',
+      title: appName,
       meta: [
         {
           name: 'description',
-          content: 'A customizable digital clock screen saver with multiple fonts, styles, and display options. Features various digital clock faces and transitions for a modern, retro, or minimalist look.'
+          content: description
         }
       ],
       htmlAttrs: {
@@ -28,16 +31,49 @@ export default defineNuxtConfig({
     'shadcn-nuxt',
     '@nuxtjs/color-mode',
     '@pinia/nuxt',
-    'pinia-plugin-persistedstate/nuxt'
+    'pinia-plugin-persistedstate/nuxt',
+    "@vite-pwa/nuxt"
   ],
   css: ['~/assets/css/tailwind.css'],
   vite: {
+    server: {
+      allowedHosts: ['clock.test']
+    },
     plugins: [
       tailwindcss(),
     ],
   },
   colorMode: {
     classSuffix: ''
+  },
+
+  pwa: {
+    registerType: 'autoUpdate',
+    includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
+    manifest: {
+      name: appName,
+      short_name: appShortName,
+      description: description,
+      theme_color: '#ffffff',
+      icons: [
+        {
+          src: '/pwa-192x192.png',
+          sizes: '192x192',
+          type: 'image/png',
+        },
+        {
+          src: '/pwa-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+        },
+        {
+          src: '/pwa-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'any maskable',
+        },
+      ],
+    },
   },
 
   fonts: {

@@ -9,10 +9,12 @@ const props = defineProps<{
 }>()
 
 const {toggleSidebar, setOpenMobile, setOpen} = useSidebar()
+const clockStore = useClockSettingsStore()
 
 onBeforeMount(() => {
   setOpenMobile(false)
   setOpen(false)
+  clockStore.dummyData = false
 })
 </script>
 
