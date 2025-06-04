@@ -18,7 +18,7 @@ const {isActive, toggleWakeLock} = useWakeLock()
       :class="cn('h-7 w-7', props.class)"
       @click="toggleWakeLock"
   >
-    <Icon v-if="isActive" name="mdi-lightbulb-on" size="24px"/>
+    <Icon v-if="isActive" name="mdi-lightbulb" size="24px"/>
     <Icon v-else name="mdi-lightbulb-off-outline" size="24px"/>
   </Button>
 </template>

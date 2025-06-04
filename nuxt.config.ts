@@ -56,7 +56,8 @@ export default defineNuxtConfig({
       name: appName,
       short_name: appShortName,
       description: description,
-      theme_color: '#ffffff',
+      theme_color: '#000000',
+      background_color: '#000000',
       icons: [
         {
           src: `${baseURL}/pwa-192x192.png`,
