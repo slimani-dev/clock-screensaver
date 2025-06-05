@@ -12,7 +12,6 @@ const props = defineProps<SidebarProps>()
 <template>
   <Sidebar v-bind="props">
     <SidebarContent>
-
       <SidebarMenu>
         <ClockSettings/>
         <DateSettings/>
