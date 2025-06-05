@@ -12,13 +12,15 @@ const {isActive, toggleWakeLock} = useWakeLock()
 </script>
 
 <template>
+  <div class="w-0 h-0 overflow-hidden">
+    <Icon name="mdi-lightbulb" size="0px"/>
+  </div>
   <Button
       variant="ghost"
       size="icon"
       :class="cn('h-7 w-7', props.class)"
       @click="toggleWakeLock"
   >
-    <Icon name="mdi-lightbulb" size="0px"/>
     <Icon v-if="isActive" name="mdi-lightbulb" size="24px"/>
     <Icon v-else name="mdi-lightbulb-off-outline" size="24px"/>
   </Button>
