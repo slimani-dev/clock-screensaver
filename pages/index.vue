@@ -59,7 +59,7 @@ const dateTopMargin = computed(() => dateStore.topMargin)
       <span
           :class="cn(
                   'leading-none inline-block overflow-visible',
-                  open ? 'border-b' : '',
+                  open ? 'border-b-2 border-b-white' : '',
                 )"
           :style="{fontSize: secondsFontSize, paddingLeft: secondsLeftPadding, width: secondsWidth}">{{
           dummyData ? 88 : seconds
