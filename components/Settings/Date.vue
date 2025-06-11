@@ -10,6 +10,7 @@ const store = useDateSettingsStore()
 
 const fontSize = computed(() => Number(store.fontSize.replace('vw', '')))
 const topMargin = computed(() => Number(store.topMargin.replace('vh', '')))
+const bottomMargin = computed(() => Number(store.bottomMargin.replace('vh', '')))
 const font = computed(() => store.font)
 
 const updateFontSize = (payload: number[] | undefined) => {
@@ -20,6 +21,11 @@ const updateFontSize = (payload: number[] | undefined) => {
 const updateTopMargin = (payload: number[] | undefined) => {
   if (!payload) return
   store.topMargin = `${payload[0]}vh`
+}
+
+const updateBottomMargin = (payload: number[] | undefined) => {
+  if (!payload) return
+  store.bottomMargin = `${payload[0]}vh`
 }
 
 const updateFont = (font: Font | undefined) => {
@@ -70,6 +76,18 @@ const updateFont = (font: Font | undefined) => {
                   :min="-50"
                   :step="1"
                   @update:model-value="updateTopMargin"
+              />
+            </div>
+          </SidebarMenuItem>
+          <SidebarMenuItem class="p-2">
+            <div class="flex flex-col gap-3 leading-none">
+              <span class="font-semibold">Date Bottom margin : {{ bottomMargin }}</span>
+              <Slider
+                  :model-value="[bottomMargin]"
+                  :max="50"
+                  :min="-50"
+                  :step="1"
+                  @update:model-value="updateBottomMargin"
               />
             </div>
           </SidebarMenuItem>

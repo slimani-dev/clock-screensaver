@@ -30,6 +30,7 @@ const dummyData = computed(() => clockStore.dummyData)
 const dateFont = computed(() => dateStore.font)
 const dateFontSize = computed(() => dateStore.fontSize)
 const dateTopMargin = computed(() => dateStore.topMargin)
+const dateBottomMargin = computed(() => dateStore.bottomMargin)
 
 const burnoutPreventionEnabled = computed(() => burnoutPreventionSettingsStore.enabled)
 const burnoutPreventionRadios = computed(() => burnoutPreventionSettingsStore.radios)
@@ -138,13 +139,15 @@ onUnmounted(() => {
       <span
           :class="cn(
                   'leading-none inline-block overflow-visible',
-                  open ? 'border-b-2 dark:border-b-white light:border-b-black' : '',
+                  open ? 'dark:bg-gray-800 bg-gray-200' : '',
                 )"
           :style="{fontSize: secondsFontSize, paddingLeft: secondsLeftPadding, width: secondsWidth}">{{
           dummyData ? 88 : seconds
         }}</span>
     </div>
-    <div :class="cn('font-medium',dateFont?.className)" :style="{ marginTop: dateTopMargin}">
+    <div
+        :class="cn('font-medium',dateFont?.className)"
+        :style="{ marginTop: dateTopMargin, marginBottom: dateBottomMargin}">
       <span class="leading-none" :style="{fontSize: dateFontSize}">{{ currentDate }}</span>
     </div>
   </div>
