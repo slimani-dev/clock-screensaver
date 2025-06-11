@@ -13,5 +13,7 @@ export const useClockSettingsStore = defineStore('clock', {
     secondsWidth: '15vw',
     dummyData: false,
   }),
-  persist: true,
+  persist: piniaPluginPersistedstate.cookies({
+    maxAge: 365 * 24 * 60 * 60,
+  }),
 })

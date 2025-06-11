@@ -13,8 +13,9 @@ const props = defineProps<SidebarProps>()
   <Sidebar v-bind="props">
     <SidebarContent>
       <SidebarMenu>
-        <ClockSettings/>
-        <DateSettings/>
+        <SettingsClock/>
+        <SettingsDate/>
+        <SettingsBurnoutPrevention/>
       </SidebarMenu>
     </SidebarContent>
     <SidebarRail/>

@@ -7,5 +7,7 @@ export const useDateSettingsStore = defineStore('date', {
     fontSize: '6vw',
     topMargin: '0vh',
   }),
-  persist: true,
+  persist: piniaPluginPersistedstate.cookies({
+    maxAge: 365 * 24 * 60 * 60,
+  }),
 })

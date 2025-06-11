@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import {Slider} from '@/components/ui/slider'
-import {
-  SidebarMenuItem,
-} from '@/components/ui/sidebar'
-import {SidebarGroup, SidebarGroupContent, SidebarGroupLabel} from "~/components/ui/sidebar";
-import {CollapsibleContent, CollapsibleTrigger} from "reka-ui";
-import {Collapsible} from "~/components/ui/collapsible";
-import type {Font} from "~/types";
+import {SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenuItem} from '@/components/ui/sidebar';
+import {CollapsibleContent, CollapsibleTrigger} from 'reka-ui';
+import {Collapsible} from '@/components/ui/collapsible';
+import type {Font} from '@/types';
 
 const store = useDateSettingsStore()
 
