@@ -111,4 +111,16 @@ export default defineNuxtConfig({
       {name: 'LCDDot TR', src: '/fonts/lcddot_tr.woff2', preload: true},
     ]
   },
+  icon: {
+    clientBundle: {
+      // list of icons to include in the client bundle
+      icons: [
+        'mdi-weather-night',
+        'mdi-weather-sunny'
+      ],
+      scan: true,
+      includeCustomCollections: true,
+      sizeLimitKb: 256,
+    },
+  },
 })
