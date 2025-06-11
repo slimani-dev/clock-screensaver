@@ -36,7 +36,7 @@ onMounted(() => {
   <Toaster/>
   <SidebarProvider v-model:open="openSideBar" :default-open="false" class="h-screen w-screen">
     <AppSidebar/>
-    <main class="h-screen w-screen overflow-hidden">
+    <main class="h-screen w-screen overflow-clip">
       <ClientOnly>
         <NuxtPage @click="toggleMenu()"/>
       </ClientOnly>
