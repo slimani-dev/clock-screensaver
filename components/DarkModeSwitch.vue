@@ -25,16 +25,6 @@ const rotateTheme = () => {
   mode.value = next;
   themeSettingsStore.savedTheme = next;
 };
-
-const icon = computed(() => {
-  /**
-   * based on the themeSettingsStore.savedTheme
-   * mdi-weather-night
-   * mdi-weather-sunny
-   * mdi-monitor-shimmer
-   */
-  return themeSettingsStore.savedTheme === 'auto' ? 'mdi-monitor-shimmer' : themeSettingsStore.savedTheme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night';
-})
 </script>
 
 <template>
@@ -43,7 +33,9 @@ const icon = computed(() => {
       size="icon"
       :class="cn('h-7 w-7', props.class)"
       @click="rotateTheme">
-    <Icon :name="icon" size="24px"/>
+    <Icon v-if="savedTheme === 'auto'" name="mdi-monitor-shimmer" size="24px"/>
+    <Icon v-if="savedTheme === 'dark'" name="mdi-weather-night" size="24px"/>
+    <Icon v-if="savedTheme === 'light'" name="mdi-weather-sunny" size="24px"/>
     <span class="sr-only">Toggle theme</span>
   </Button>
 </template>
